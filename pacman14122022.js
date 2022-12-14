@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     // Afficher le score
     const scoreDisplay = document.querySelector('#score')
+    const timereElt = document.getElementById('timer')
     const width = 28
     let score = 0
     const grid = document.querySelector('.grid')
@@ -229,6 +230,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(function(){alert('GAME OVER')}, 500)
                 }
             }
+
+
+
+        let counter =10
+        const timer =setInterval(function (){
+        timereElt.innerText = counter
+        counter--;
+        if(counter === 0){
+        gameOver()
+        clearInterval(timer)
+        }
+        }, 1000);
 
         //function Game WIN
         function gameWin(){
