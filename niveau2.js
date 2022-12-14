@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
 
     // "layout" : Mise en page du grid
+    // 0 = coin _ 1 = wall _ 2 = maison fantome _ 3 = Flash _ 4 = vide
     const layout = [
     4,4,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,4,4,4,4,
     4,4,4,4,4,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,4,4,4,4,4,
@@ -180,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
 
     //faire apparaitre les fantômes dans le grid
-    ghosts.forEach(ghost => {
+    ghosts.forEach(ghost => {direction
         squares[ghost.currentIndex].classList.add(ghost.name)
         squares[ghost.currentIndex].classList.add('ghost')
     })

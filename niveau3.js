@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
 
     // "layout" : Mise en page du grid
+    // 0 = coin _ 1 = wall _ 2 = maison fantome _ 3 = Flash _ 4 = vide
     const layout = [
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
     1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
