@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
     1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
+    1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
     1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
     1,1,1,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,4,1,1,0,1,1,1,1,1,1,
     1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
     4,4,4,4,4,4,0,0,0,4,1,2,2,2,2,2,2,1,4,0,0,0,4,4,4,4,4,4,
-    1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,2,1,1,1,1,2,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,2,1,1,1,1,2,1,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,2,2,2,2,2,2,2,2,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,2,2,1,1,2,2,1,4,1,1,0,1,1,1,1,1,1,
+    1,1,1,1,1,1,0,1,1,4,1,2,2,1,1,2,2,1,4,1,1,0,1,1,1,1,1,1,
     1,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createBoard()
 
     //Création de pacman
-    let pacManIndex = 490 //490 est la position initiale de pacman
+    let pacManIndex = 492 //490 est la position initiale de pacman
     squares[pacManIndex].classList.add('pacman')
 
     //mouvement de pacman (70-122=52)
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[pacManIndex].classList.contains('coin')){
             score += 50
             scoreDisplay.innerHTML = score
-            squares[pacManIndex].classList.remove('coin')
+            squares[pacManIndex].classList.remove('coin')            
             }
         }
 
@@ -175,7 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
         new Ghost('redGhost', 350, 350),        //inky
         new Ghost('blueGhost', 380, 350),       //clyde
         new Ghost('blueGhost', 376, 250),
-        new Ghost('blueGhost', 377, 250)
+        new Ghost('blueGhost', 377, 250),
+        new Ghost('boss', 376, 50),
+        new Ghost('boss', 376, 50),
         
     ]
 
@@ -190,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function ghostMove(ghost){
         const directions = [-1,  +1, width, -width]
         let direction = directions[Math.floor(Math.random() * directions.length)]
-
         ghost.timerId = setInterval(function(){
         //Si la prochaine case où va le fantome n'a pas de fantome ni de mur :
         if(
@@ -227,7 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 !squares[pacManIndex].classList.contains('scareGhost')){
                 ghosts.forEach(ghost => clearInterval(ghost.timerId))
                 document.removeEventListener('keyup', pacManMove)
-                setTimeout(function(){alert('GAME OVER')}, 500)
+                setTimeout(function(){alert('GAME OVER, click OK pour recommencer ce level')}, 500)&&
+                setTimeout(function(){
+                    window.location.href= "./niveau3.html"
+                }, 2000)
                 }
             }
 
@@ -248,16 +252,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if(score === 11500){
                 ghosts.forEach(ghost => clearInterval(ghost.timerId))
                 document.addEventListener('keyup', pacManMove)
-                setTimeout(function(){alert("Victoire")}, 500)
+                setTimeout(function(){alert('Félicitations !! Maintenant reprends tes cours')}, 500)&&
+                setTimeout(function(){
+                    window.location.href= "https://www.ironhack.com/fr"
+                }, 2000)
                 }
             } 
         })
-
-
-
-// let counter = 10
-// const timer = setInterval(function(){
-//     timereElt.innerText = counter
-// // })
-
-// setTimeout(function(){location.href = "./pacmanLvl2.html";}, 500)

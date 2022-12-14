@@ -2,7 +2,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', function(event) {
-        if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        if (
+            event.key === 'ArrowUp' || event.key === 'ArrowDown' ||
+            event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
           event.preventDefault();
         }
       });
@@ -14,34 +16,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // "layout" : Mise en page du grid
     const layout = [
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,1,1,2,2,1,1,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
-    4,4,4,4,4,4,0,0,0,4,1,2,2,2,2,2,2,1,4,0,0,0,4,4,4,4,4,4,
-    1,1,1,1,1,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,2,1,1,1,1,2,1,4,1,1,0,1,1,1,1,1,1,
-    1,1,1,1,1,1,0,1,1,4,1,2,1,1,1,1,2,1,4,1,1,0,1,1,1,1,1,1,
-    1,0,0,0,0,0,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-    1,3,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,1,
-    1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
-    1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
-    1,0,0,0,1,1,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,1,1,0,0,0,1,
-    1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-    1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-    1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    4,4,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,4,4,4,4,4,4,4,4,4,4,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,4,1,1,1,2,2,1,1,1,4,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,4,1,2,2,2,2,2,2,1,4,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,0,0,4,1,2,2,2,2,2,2,1,4,0,0,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,4,2,2,2,2,2,2,2,2,4,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,4,1,1,1,1,1,1,1,1,4,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,4,1,1,1,1,1,1,1,1,4,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,0,0,4,4,4,4,4,4,4,4,4,4,0,0,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,4,4,4,4,4,
+    4,4,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,4,4,4,4
     ]
 
     // Tableau vide "squares" pour la création des "div"
@@ -75,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //mouvement de pacman (70-122=52)
     function pacManMove(e){
         squares[pacManIndex].classList.remove('pacman')
+        squares[pacManIndex].removeAttribute('style')
         switch(e.keyCode){
             case 37:
                 if(
@@ -83,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     !squares[pacManIndex -1].classList.contains('ghost-home')
                 )
                     pacManIndex -= 1                    
-                    squares[pacManIndex].style.transform = 'rotate(180deg)' //left
+                    squares[pacManIndex].style.transform = 'rotate(180deg)' //left                    
                 if(squares[pacManIndex -1] === squares[363]){
                     pacManIndex = 391
                 }
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     !squares[pacManIndex -width].classList.contains('ghost-home')
                 )
                     pacManIndex -= width
-                    squares[pacManIndex].style.transform = 'rotate(270deg)' //up
+                    squares[pacManIndex].style.transform = 'rotate(270deg)' //up                    
                     break
             case 39 :
                 if(
@@ -104,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     !squares[pacManIndex +1].classList.contains('ghost-home')
                 )
                 pacManIndex += 1
-                squares[pacManIndex].style.transform = 'rotate(0deg)' //right
+                squares[pacManIndex].style.transform = 'rotate(0deg)' //right                
                 if(squares[pacManIndex +1] === squares[392]){
                     pacManIndex = 364
                 }
@@ -117,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 )
                 pacManIndex+= width
                 squares[pacManIndex].classList.add('down')
-                squares[pacManIndex].style.transform = 'rotate(90deg)' //down
+                squares[pacManIndex].style.transform = 'rotate(90deg)' //down                
                 break             
         }
         squares[pacManIndex].classList.add('pacman')
@@ -134,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[pacManIndex].classList.contains('coin')){
             score += 50
             scoreDisplay.innerHTML = score
-            squares[pacManIndex].classList.remove('coin')
+            squares[pacManIndex].classList.remove('coin')            
             }
         }
 
@@ -171,6 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
         new Ghost('redGhost', 350, 350),        //inky
         new Ghost('blueGhost', 380, 350),       //clyde
         new Ghost('blueGhost', 376, 250),
+        new Ghost('blueGhost', 377, 250),
+        new Ghost('boss', 376, 100),
         
     ]
 
@@ -185,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function ghostMove(ghost){
         const directions = [-1,  +1, width, -width]
         let direction = directions[Math.floor(Math.random() * directions.length)]
-
         ghost.timerId = setInterval(function(){
         //Si la prochaine case où va le fantome n'a pas de fantome ni de mur :
         if(
@@ -222,24 +226,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 !squares[pacManIndex].classList.contains('scareGhost')){
                 ghosts.forEach(ghost => clearInterval(ghost.timerId))
                 document.removeEventListener('keyup', pacManMove)
-                setTimeout(function(){alert('GAME OVER')}, 500)
+                setTimeout(function(){alert('GAME OVER, click OK pour recommencer ce level')}, 500)&&
+                setTimeout(function(){
+                    window.location.href= "./niveau2.html"
+                }, 2000)
                 }
             }
 
-        //function Game WIN
+        //function Game WIN   
         function gameWin(){
-            if(score === 11500){
+            if(score === 300){
                 ghosts.forEach(ghost => clearInterval(ghost.timerId))
                 document.addEventListener('keyup', pacManMove)
-                setTimeout(function(){alert('*******CONGRATULATIONS, VICTORY*******')}, 500)
+                setTimeout(function(){alert('Félicitations, tu as réussis le level 2 !! Go au level 3')}, 500)&&
+                setTimeout(function(){
+                    window.location.href= "./niveau3.html"
+                }, 2000)
                 }
             } 
-
         })
-
-
-
-// let counter = 10
-// const timer = setInterval(function(){
-//     timereElt.innerText = counter
-// })
