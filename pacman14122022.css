@@ -1,0 +1,85 @@
+@media screen {
+  
+body {
+    
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+/* _________ MAP "grid"_________ */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1120px;
+    height: 1120px;    
+}
+
+.grid div {
+    width: 40px;
+    height: 40px;
+}
+
+.ghost-home {
+    background-color: rgb(51, 50, 50);
+}
+
+.coin {
+    background-image: url("./images/coin.webp");
+    background-repeat: no-repeat;
+    background-size: cover;  
+    box-sizing: border-box;
+}
+
+.wall {
+    background-image: url("./images/wall.webp");
+    background-repeat: no-repeat;
+    background-size: cover;     
+}
+
+.flash {
+    background-image: url("./images/flash.webp");
+    background-repeat: no-repeat;
+    background-size: contain;     
+}
+
+/* _________ PACMAN _________ */
+.pacman {
+    background-image: url("./images/source.gif");
+    background-repeat: no-repeat;
+    background-size: contain; 
+    margin: 0;
+    padding: 0;
+}
+
+/* _________ Les FANTOMES _________ */
+.orangeGhost{
+    background-image: url("./images/orangeGhost.webp");
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+
+.pinkGhost{
+    background-image: url("./images/pinkGhost.webp");
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.redGhost{
+    background-image: url("./images/redGhost.png");
+    background-repeat: no-repeat;
+    background-size: cover;     
+}
+
+.blueGhost{
+    background-image: url("./images/blueGhost.webp");
+    background-repeat: no-repeat;
+    background-size: cover;     
+}
+
+.scareGhost{
+    background-image: url("./images/scareGhost.webp");
+    background-repeat: no-repeat;
+    background-size: contain;   
+}
+}
