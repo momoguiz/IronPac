@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        let counter =10
+        let counter =120
         const timer =setInterval(function (){
         timereElt.innerText = counter
         counter--;
