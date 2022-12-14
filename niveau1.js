@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         new Ghost('orangeGhost', 377, 250),     //blinky
         new Ghost('pinkGhost', 375, 350),       //pinky
         new Ghost('redGhost', 350, 350),        //inky
-        new Ghost('blueGhost', 380, 350),       //clyde
+        new Ghost('redGhost', 380, 350),       //clyde
         new Ghost('blueGhost', 376, 250),
         new Ghost('blueGhost', 377, 250)
         
@@ -232,6 +232,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000)
                 }
             }
+
+            let counter = 2
+            const timer =setInterval(function (){
+            timereElt.innerText = counter
+            counter--;
+            if(counter === 0){
+            gameOver()
+            clearInterval(timer)
+            }
+            }, 1000);
 
         //function Game WIN   
         function gameWin(){

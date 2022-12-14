@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         new Ghost('orangeGhost', 377, 250),     //blinky
         new Ghost('pinkGhost', 375, 350),       //pinky
         new Ghost('redGhost', 350, 350),        //inky
-        new Ghost('blueGhost', 380, 350),       //clyde
+        new Ghost('redGhost', 380, 350),       //clyde
         new Ghost('blueGhost', 376, 250),
         new Ghost('blueGhost', 377, 250),
         new Ghost('boss', 376, 100),
