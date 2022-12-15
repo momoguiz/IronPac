@@ -45,8 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
         new Game('Level 3', 3, 360, 492, 'wallor','rgb(73, 55, 55)', 500, 'Félicitations !! Maintenant reprends tes cours')
     ]
     // select game level
-    let game = games[0];
+    if (!window.localStorage.getItem('currentGame')) {
+        window.localStorage.setItem('currentGame', JSON.stringify(games[0]))
+    }
+    let game = JSON.parse(window.localStorage.getItem('currentGame'))
 
+    // Set layout
     const layout = levels[game.level];
 
     // Tableau vide "squares" pour la création des "div"
@@ -272,21 +276,15 @@ document.addEventListener('DOMContentLoaded', () => {
             ghosts.forEach(ghost => clearInterval(ghost.timerId))
             document.addEventListener('keyup', pacManMove)
             winAudio.play()
-            setTimeout(function(){alert(game.congratulation)}, 500)
-            console.log(game.level)
+            setTimeout(function(){alert(game.congratulation)}, 1000)
             if (game.level !== 3){
-                game = games[game.level]
+                window.localStorage.setItem('currentGame', JSON.stringify(games[game.level]))
+                game = JSON.parse(window.localStorage.getItem('currentGame'))
+                setTimeout(function(){ window.location.reload() }, 2000)
             }
             else {
-                game = games[0]
+                setTimeout(function(){ window.location.href= "https://www.ironhack.com/fr" }, 10000)
             }
-            console.log(game.level)
-
-            setTimeout(function(){
-                window.location.reload();     // Doesn't work :(  // explorer local storage / set game
-                // window.location.href = './index.html'
-                //window.open('./index.html')
-            }, 2000)
         }
     }
 })
