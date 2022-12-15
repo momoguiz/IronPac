@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
         }
     });
+
+    // gestion du son
+    const eatAudio = new Audio()
+    eatAudio.src = 'audio/eat.mp3'
+    const eatFlashAudio = new Audio()
+    eatFlashAudio.src = 'audio/eatflash.wav'
+    const winAudio= new Audio()
+    winAudio.src='audio/win.wav'
+
     // Afficher le score
     const scoreDisplay = document.querySelector('#score')
     let score = 0
@@ -135,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             score += 50
             scoreDisplay.innerHTML = score
             squares[pacManIndex].classList.remove('coin')
+            eatAudio.play()
             }
         }
 
@@ -146,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ghosts.forEach(ghost => ghost.noDangerGhost = true)
             setTimeout(noDangerGhost, 10000)
             squares[pacManIndex].classList.remove('flash')
+            eatFlashAudio.play()
             }
         }
 
@@ -260,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (score === game.score) {
             ghosts.forEach(ghost => clearInterval(ghost.timerId))
             document.addEventListener('keyup', pacManMove)
+            winAudio.play()
             setTimeout(function(){alert(game.congratulation)}, 500)
             console.log(game.level)
             if (game.level !== 3){
