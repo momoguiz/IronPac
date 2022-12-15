@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const timereElt = document.getElementById('timer')
     const width = 28
     const grid = document.querySelector('.grid')
+    const title = document.getElementById('level-title')
 
 
     //Création des paramètres du jeu"
@@ -50,6 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     let game = JSON.parse(window.localStorage.getItem('currentGame'))
     console.log('Beg level is ' + game.level)
+
+    // Set level title
+    title.innerHTML = game.name
+
     // Set layout
     const layout = levels[game.level.toString()];
     console.log('layout is ' + game.level.toString())

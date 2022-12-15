@@ -7,6 +7,12 @@
         background-color: black;
     }
 
+    #level-title {
+        background-color: antiquewhite;
+        text-align: center;
+        width: 1120px;
+    }
+
     /* _________ MAP "grid"_________ */
     .grid {
         display: flex;
