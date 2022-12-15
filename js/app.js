@@ -42,16 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const games = [  //score max 3800 - 7000 - 11500
         new Game('Level 1', 1, 120, 490, 'wall', 'rgb(51, 50, 50)', 800, 'Félicitations, tu as réussis le level 1 !! Go au level 2'),
         new Game('Level 2', 2, 240, 490, 'wall', 'rgb(94, 91, 49)', 300, 'Félicitations, tu as réussis le level 2 !! Go au level 3'),
-        new Game('Level 3', 3, 360, 492, 'wallor','rgb(73, 55, 55)', 500, 'Félicitations !! Maintenant reprends tes cours')
+        new Game('Level 3', 3, 360, 492, 'wallor','rgb(73, 55, 55)', 500, 'Félicitations, tu as réussis le level 3 !! Maintenant reprends tes cours')
     ]
     // select game level
     if (!window.localStorage.getItem('currentGame')) {
         window.localStorage.setItem('currentGame', JSON.stringify(games[0]))
     }
     let game = JSON.parse(window.localStorage.getItem('currentGame'))
-
+    console.log('Beg level is ' + game.level)
     // Set layout
-    const layout = levels[game.level];
+    const layout = levels[game.level.toString()];
+    console.log('layout is ' + game.level.toString())
 
     // Tableau vide "squares" pour la création des "div"
     const squares = []
@@ -276,15 +277,25 @@ document.addEventListener('DOMContentLoaded', () => {
             ghosts.forEach(ghost => clearInterval(ghost.timerId))
             document.addEventListener('keyup', pacManMove)
             winAudio.play()
-            setTimeout(function(){alert(game.congratulation)}, 1000)
-            if (game.level !== 3){
-                window.localStorage.setItem('currentGame', JSON.stringify(games[game.level]))
+            console.log(game)
+            alert(game.congratulation)
+            console.log('End level is ' + game.level)
+            if (game.level === 1){
+                window.localStorage.setItem('currentGame', JSON.stringify(games[1]))  //
+                game = JSON.parse(window.localStorage.getItem('currentGame'))
+                setTimeout(function(){ window.location.reload() }, 2000)
+            } else if (game.level === 2) {
+                window.localStorage.setItem('currentGame', JSON.stringify(games[2]))  //
                 game = JSON.parse(window.localStorage.getItem('currentGame'))
                 setTimeout(function(){ window.location.reload() }, 2000)
             }
-            else {
-                setTimeout(function(){ window.location.href= "https://www.ironhack.com/fr" }, 10000)
+            else if (game.level === 3) {
+                setTimeout(function(){ window.location.href= "https://www.ironhack.com/fr" }, 3000)
+                window.localStorage.clear()
+            } else {
+                console.log('something wrong')
             }
+            console.log('End2 level is ' + game.level)
         }
     }
 })
