@@ -1,4 +1,13 @@
 
+    // Levels and layouts (3)
+
+    // Legend
+        // 0 = coin
+        // 1 = wall
+        // 2 = maison fantome
+        // 3 = Flash
+        // 4 = vide
+
 const levels = {
     '1': [
             4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -91,7 +100,3 @@ const levels = {
             1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
         ]
 };
-
-//module.exports = levels;
-
-//export { levels };
