@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (
             event.key === 'ArrowUp' || event.key === 'ArrowDown' ||
             event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-          event.preventDefault();
+            event.preventDefault();
         }
       });
     // Afficher le score
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
 
     // "layout" : Mise en page du grid
+    // 0 = coin _ 1 = wall _ 2 = maison fantome _ 3 = Flash _ 4 = vide
     const layout = [
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
     1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
@@ -173,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         new Ghost('orangeGhost', 377, 250),     //blinky
         new Ghost('pinkGhost', 375, 350),       //pinky
         new Ghost('redGhost', 350, 350),        //inky
-        new Ghost('blueGhost', 380, 350),       //clyde
+        new Ghost('redGhost', 380, 350),       //clyde
         new Ghost('blueGhost', 376, 250),
         new Ghost('blueGhost', 377, 250),
         new Ghost('boss', 376, 50),
@@ -237,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        let counter =120
+        let counter =2
         const timer =setInterval(function (){
         timereElt.innerText = counter
         counter--;
