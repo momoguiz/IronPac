@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
             this.congratulation = congratulation
         }
     }
-    const games = [
-        new Game('Level 1', 1, 120, 490, 'wall', 'rgb(51, 50, 50)', 3800, 'Félicitations, tu as réussis le level 1 !! Go au level 2'),
+    const games = [  //score max 3800 - 7000 - 11500
+        new Game('Level 1', 1, 120, 490, 'wall', 'rgb(51, 50, 50)', 800, 'Félicitations, tu as réussis le level 1 !! Go au level 2'),
         new Game('Level 2', 2, 240, 490, 'wall', 'rgb(94, 91, 49)', 300, 'Félicitations, tu as réussis le level 2 !! Go au level 3'),
         new Game('Level 3', 3, 360, 492, 'wallor','rgb(73, 55, 55)', 500, 'Félicitations !! Maintenant reprends tes cours')
     ]
     // select game level
-    let game = games[1];
+    let game = games[0];
 
     const layout = levels[game.level];
 
@@ -261,15 +261,20 @@ document.addEventListener('DOMContentLoaded', () => {
             ghosts.forEach(ghost => clearInterval(ghost.timerId))
             document.addEventListener('keyup', pacManMove)
             setTimeout(function(){alert(game.congratulation)}, 500)
-            // setTimeout(function(){
-            //     if (game.level !== 3){ 
-            //         game = games[game.level]
-            //     }
-            //     else { 
-            //         game = games[0]
-            //     }
-            //     window.location.reload();     // Doesn't work :(
-            // }, 2000)
+            console.log(game.level)
+            if (game.level !== 3){
+                game = games[game.level]
+            }
+            else {
+                game = games[0]
+            }
+            console.log(game.level)
+
+            setTimeout(function(){
+                window.location.reload();     // Doesn't work :(  // explorer local storage / set game
+                // window.location.href = './index.html'
+                //window.open('./index.html')
+            }, 2000)
         }
     }
 })
