@@ -62,13 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tableau vide "squares" pour la création des "div"
     const squares = []
 
+    // debug
+    //let count = 0
+
     // Création du board
     function createBoard(){
         for(let i=0; i<layout.length; i++){
             const square = document.createElement('div')
             grid.appendChild(square)
             squares.push(square)
-
+            //square.innerHTML = count
+            //count++
             //Conditions de mise en page "layout"
             if(layout[i] === 0){
                 squares[i].classList.add('coin')
